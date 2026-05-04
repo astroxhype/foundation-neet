@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NEET Bio Foundation Map</title>
+<title>NEET Foundation Map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -32,6 +32,7 @@
     min-height: 100vh;
     color: var(--ink);
     background:
+      linear-gradient(112deg, transparent 0 49.8%, rgba(229,49,25,0.085) 49.9% 50.18%, transparent 50.25% 100%) 0 0 / 260px 260px,
       linear-gradient(90deg, rgba(17,16,13,0.055) 1px, transparent 1px) 0 0 / 34px 34px,
       linear-gradient(rgba(17,16,13,0.055) 1px, transparent 1px) 0 0 / 34px 34px,
       var(--paper);
@@ -56,7 +57,9 @@
     width: min(1500px, calc(100vw - 28px));
     margin: 14px auto 64px;
     border: 2px solid var(--ink);
-    background: var(--paper);
+    background:
+      linear-gradient(90deg, rgba(157,27,13,0.035) 1px, transparent 1px) 0 0 / 68px 100%,
+      var(--paper);
     box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
@@ -96,6 +99,23 @@
     font-size: clamp(1.7rem, 3vw, 3.2rem);
     line-height: 0.85;
     letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand::before {
+    content: '学';
+    width: 34px;
+    height: 34px;
+    display: inline-grid;
+    place-items: center;
+    border: 2px solid var(--red);
+    color: var(--red);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    line-height: 1;
+    transform: rotate(-7deg);
   }
 
   .tagline {
@@ -127,12 +147,65 @@
     grid-template-columns: 1fr 360px;
     min-height: 560px;
     border-bottom: 2px solid var(--ink);
+    position: relative;
+    overflow: hidden;
   }
 
   .hero-copy {
-    padding: clamp(28px, 6vw, 76px);
+    padding: clamp(28px, 6vw, 76px) clamp(28px, 6vw, 76px) clamp(28px, 6vw, 76px) clamp(58px, 7vw, 96px);
     border-right: 2px solid var(--ink);
     position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero-kanji {
+    position: absolute;
+    right: clamp(18px, 6vw, 86px);
+    top: clamp(12px, 4vw, 52px);
+    z-index: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(14rem, 30vw, 27rem);
+    line-height: 0.82;
+    color: rgba(229,49,25,0.085);
+    transform: rotate(-8deg);
+    pointer-events: none;
+  }
+
+  .hero-copy > :not(.hero-kanji):not(.jp-vertical) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .jp-vertical {
+    position: absolute;
+    top: clamp(26px, 5vw, 70px);
+    bottom: clamp(26px, 5vw, 70px);
+    width: 34px;
+    display: grid;
+    place-items: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    border: 2px solid var(--ink);
+    background: var(--paper-2);
+    color: var(--red-dark);
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    z-index: 2;
+    box-shadow: 4px 4px 0 rgba(17,16,13,0.14);
+  }
+
+  .jp-vertical-left {
+    left: clamp(10px, 2vw, 18px);
+  }
+
+  .jp-vertical-right {
+    right: clamp(10px, 2vw, 18px);
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--red);
   }
 
   .eyebrow {
@@ -210,17 +283,53 @@
     font-size: 0.74rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    position: relative;
+    background:
+      radial-gradient(circle, transparent 53%, rgba(229,49,25,0.12) 54% 56%, transparent 57%),
+      var(--paper);
+  }
+
+  .hero-stamp::after {
+    content: '合格';
+    position: absolute;
+    inset: auto auto -18px -12px;
+    width: 62px;
+    height: 62px;
+    display: grid;
+    place-items: center;
+    border: 3px solid var(--red);
+    color: var(--red);
+    background: var(--paper);
+    font-size: 0.78rem;
+    line-height: 1.15;
+    transform: rotate(11deg);
   }
 
   .hero-side {
     display: grid;
     grid-template-rows: 1fr auto auto;
     background: var(--paper-2);
+    position: relative;
+    overflow: hidden;
   }
 
   .side-panel {
-    padding: 24px;
+    padding: 24px 58px 24px 24px;
     border-bottom: 2px solid var(--ink);
+    position: relative;
+    z-index: 1;
+  }
+
+  .side-panel::after {
+    content: '道';
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    color: rgba(229,49,25,0.18);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 5.5rem;
+    line-height: 0.8;
+    pointer-events: none;
   }
 
   .side-panel h2 {
@@ -257,6 +366,8 @@
   .nav-jump {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    position: relative;
+    z-index: 1;
   }
 
   .nav-jump a {
@@ -283,166 +394,243 @@
   .route-dock {
     position: sticky;
     top: 0;
-    z-index: 40;
+    width: 100%;
+    z-index: 80;
     display: grid;
-    grid-template-columns: 220px 1fr 230px;
+    grid-template-columns: 180px minmax(0, 1fr) minmax(270px, 380px);
+    align-items: stretch;
+    padding: 0;
+    border: 0;
     border-bottom: 2px solid var(--ink);
     background:
-      linear-gradient(90deg, rgba(229,49,25,0.14) 1px, transparent 1px) 0 0 / 38px 38px,
-      var(--ink);
-    color: var(--paper);
+      linear-gradient(90deg, rgba(17,16,13,0.045) 1px, transparent 1px) 0 0 / 28px 28px,
+      var(--paper-2);
+    color: var(--ink);
+    box-shadow: 0 6px 0 rgba(17,16,13,0.12);
     isolation: isolate;
+  }
+
+  .route-dock > * {
+    position: relative;
+    z-index: 1;
   }
 
   .route-dock::before {
     content: '';
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
     background:
-      linear-gradient(112deg, transparent 0 35%, rgba(229,49,25,0.24) 35.1% 35.7%, transparent 35.8% 100%),
-      radial-gradient(circle at 18% 50%, rgba(229,49,25,0.2), transparent 32%);
+      linear-gradient(112deg, transparent 0 42%, rgba(229,49,25,0.12) 42.1% 42.6%, transparent 42.7% 100%);
+    pointer-events: none;
+  }
+
+  .route-dock::after {
+    content: '道';
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    z-index: 0;
+    color: rgba(229,49,25,0.1);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 6.5rem;
+    line-height: 1;
+    transform: translateY(-50%) rotate(-6deg);
     pointer-events: none;
   }
 
   .route-dock-head {
+    min-width: 0;
     display: grid;
     align-content: center;
-    gap: 6px;
-    padding: 16px 18px;
-    border-right: 2px solid var(--paper);
+    gap: 4px;
+    padding: 12px 16px;
+    border-right: 2px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
   }
 
   .route-dock-head span,
   .route-readout span {
-    font-size: 0.58rem;
+    font-size: 0.56rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(242,234,219,0.54);
+    color: var(--muted);
+  }
+
+  .route-dock-head span {
+    color: rgba(242,234,219,0.58);
   }
 
   .route-dock-head strong {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     line-height: 0.82;
     font-weight: 400;
     color: var(--paper);
   }
 
-  .route-selector {
+  .deck-controls {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
     min-width: 0;
   }
 
+  .subject-selector,
+  .route-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    min-width: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .route-selector { border-bottom: 0; }
+
+  .subject-choice,
+  .class-choice,
   .route-choice {
     position: relative;
-    min-height: 94px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 10px 14px;
-    align-content: center;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     border: 0;
-    border-right: 1px solid rgba(242,234,219,0.42);
+    border-right: 1px solid var(--ink);
     background: transparent;
-    color: var(--paper);
-    padding: 14px 16px;
-    text-align: left;
+    color: var(--ink);
+    padding: 8px 13px;
+    text-align: center;
     cursor: pointer;
     overflow: hidden;
   }
 
-  .route-choice:last-child { border-right: 0; }
-
+  .subject-choice::before,
+  .class-choice::before,
   .route-choice::before {
     content: '';
     position: absolute;
-    inset: auto 12px 10px 12px;
-    height: 3px;
+    inset: auto 8px 5px 8px;
+    height: 2px;
     background: var(--red);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 260ms cubic-bezier(.2,.8,.2,1);
   }
 
-  .route-choice::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(105deg, transparent 0 42%, rgba(229,49,25,0.64) 42.2% 43.2%, transparent 43.4% 100%),
-      rgba(229,49,25,0.08);
-    transform: translateX(-110%) skewX(-16deg);
-    transition: transform 360ms cubic-bezier(.77,0,.18,1);
-    pointer-events: none;
-  }
-
+  .subject-choice b,
+  .class-choice b,
   .route-choice b {
-    grid-row: span 2;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.2rem;
-    line-height: 0.78;
+    font-size: 1.18rem;
+    line-height: 0.8;
     color: var(--red);
     font-weight: 400;
   }
 
+  .subject-choice span,
+  .class-choice span,
   .route-choice span {
-    align-self: end;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.5rem, 2.1vw, 2.4rem);
-    line-height: 0.88;
-    font-weight: 400;
-  }
-
-  .route-choice em {
-    align-self: start;
-    color: rgba(242,234,219,0.58);
-    font-size: 0.58rem;
-    font-style: normal;
+    position: relative;
+    z-index: 1;
+    font-size: 0.62rem;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
+  .route-choice em {
+    display: none;
+  }
+
+  .subject-choice small {
+    color: var(--muted);
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .subject-choice:hover,
+  .subject-choice:focus-visible,
+  .subject-choice[aria-pressed="true"],
+  .class-choice:hover,
+  .class-choice:focus-visible,
+  .class-choice[aria-pressed="true"],
   .route-choice:hover,
   .route-choice:focus-visible,
   .route-choice[aria-pressed="true"] {
     outline: 0;
-    background: var(--paper);
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .subject-choice:hover b,
+  .subject-choice:focus-visible b,
+  .subject-choice[aria-pressed="true"] b,
+  .class-choice:hover b,
+  .class-choice:focus-visible b,
+  .class-choice[aria-pressed="true"] b,
+  .route-choice:hover b,
+  .route-choice:focus-visible b,
+  .route-choice[aria-pressed="true"] b {
+    color: var(--paper);
+  }
+
+  .route-choice[aria-pressed="true"],
+  .subject-choice[aria-pressed="true"],
+  .class-choice[aria-pressed="true"] {
+    background: var(--red);
+    color: var(--paper);
+  }
+
+  .route-choice[aria-pressed="true"] b,
+  .subject-choice[aria-pressed="true"] b,
+  .class-choice[aria-pressed="true"] b {
     color: var(--ink);
   }
 
+  .subject-choice:hover::before,
+  .subject-choice:focus-visible::before,
+  .subject-choice[aria-pressed="true"]::before,
+  .class-choice:hover::before,
+  .class-choice:focus-visible::before,
+  .class-choice[aria-pressed="true"]::before,
   .route-choice:hover::before,
   .route-choice:focus-visible::before,
   .route-choice[aria-pressed="true"]::before {
     transform: scaleX(1);
   }
 
-  .route-choice:hover::after,
-  .route-choice:focus-visible::after,
-  .route-choice[aria-pressed="true"]::after {
-    transform: translateX(110%) skewX(-16deg);
-  }
-
-  .route-choice:hover em,
-  .route-choice:focus-visible em,
-  .route-choice[aria-pressed="true"] em {
+  .subject-choice:hover small,
+  .subject-choice:focus-visible small,
+  .subject-choice[aria-pressed="true"] small {
     color: var(--muted);
   }
 
   .route-readout {
     display: grid;
     align-content: center;
-    gap: 10px;
-    padding: 14px 18px;
-    border-left: 2px solid var(--paper);
+    gap: 6px;
+    min-width: 0;
+    max-width: none;
+    padding: 10px 14px;
+    border-left: 2px solid var(--ink);
+    background: var(--paper);
   }
 
   .route-readout strong {
-    color: var(--paper);
-    font-size: 0.76rem;
-    line-height: 1.5;
+    color: var(--ink);
+    font-size: 0.62rem;
+    line-height: 1.35;
+  }
+
+  .dock-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
   }
 
   .route-jump {
@@ -450,7 +638,7 @@
     border: 1px solid var(--red);
     background: var(--red);
     color: var(--paper);
-    padding: 9px 12px;
+    padding: 8px 10px;
     font-size: 0.62rem;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -461,9 +649,32 @@
   .route-jump:hover,
   .route-jump:focus-visible {
     outline: 0;
-    background: var(--paper);
-    color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
   }
+
+  section[id] {
+    position: relative;
+  }
+
+  section[id][data-jp]::before {
+    content: attr(data-jp);
+    position: absolute;
+    right: clamp(10px, 2vw, 20px);
+    top: 18px;
+    z-index: 3;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    padding: 9px 6px;
+    border-left: 2px solid var(--red);
+    color: rgba(157,27,13,0.58);
+    background: rgba(242,234,219,0.74);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    pointer-events: none;
+  }
+
 
   .section-head {
     display: grid;
@@ -471,6 +682,7 @@
     gap: 24px;
     align-items: end;
     padding: 32px clamp(18px, 4vw, 44px);
+    padding-right: clamp(62px, 7vw, 92px);
     border-bottom: 2px solid var(--ink);
   }
 
@@ -671,6 +883,22 @@
     letter-spacing: -0.01em;
   }
 
+  .node h3::before {
+    content: '章';
+    display: inline-grid;
+    place-items: center;
+    width: 23px;
+    height: 23px;
+    margin: 0 8px 4px 0;
+    border: 1px solid var(--red);
+    color: var(--red-dark);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    line-height: 1;
+    vertical-align: middle;
+    transform: rotate(-5deg);
+  }
+
   .node p {
     margin: 12px 0 0;
     color: var(--muted);
@@ -835,12 +1063,32 @@
   }
 
   .route-empty {
-    padding: 28px;
+    padding: clamp(26px, 5vw, 54px);
     border: 2px solid var(--ink);
-    background: var(--paper);
+    background:
+      linear-gradient(90deg, rgba(229,49,25,0.12) 1px, transparent 1px) 0 0 / 34px 34px,
+      var(--paper);
+    min-height: 260px;
+    display: grid;
+    align-content: center;
+    gap: 12px;
+  }
+
+  .route-empty b {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.82;
+    font-weight: 400;
+    color: var(--red);
+  }
+
+  .route-empty span {
+    max-width: 680px;
+    font-size: 0.88rem;
     font-weight: 700;
+    line-height: 1.65;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
   }
 
   @keyframes routeNodeIn {
@@ -1285,6 +1533,20 @@
     padding: 12px;
     border: 1px solid var(--ink);
     background: var(--paper-2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chapter-row::after {
+    content: '章';
+    position: absolute;
+    right: 8px;
+    bottom: 6px;
+    color: rgba(229,49,25,0.18);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
   }
 
   .chapter-row b {
@@ -1365,23 +1627,20 @@
   .accent-gold { color: var(--gold); }
 
   @media (max-width: 1060px) {
+    body {
+      padding-bottom: 0;
+    }
+
     .route-dock {
-      position: static;
       grid-template-columns: 1fr;
+      width: 100%;
     }
 
     .route-dock-head,
     .route-readout {
       border: 0;
-      border-bottom: 2px solid var(--paper);
-    }
-
-    .route-selector {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .route-choice:nth-child(2n) {
-      border-right: 0;
+      border-bottom: 2px solid var(--ink);
+      max-width: none;
     }
 
     .route-map-head {
@@ -1429,11 +1688,15 @@
   }
 
   @media (max-width: 760px) {
+    body { padding-bottom: 0; }
     .shell { width: calc(100vw - 18px); margin-top: 9px; box-shadow: 5px 5px 0 var(--ink); }
     .topbar { grid-template-columns: 1fr; }
     .topbar > div { border-right: 0; border-bottom: 2px solid var(--paper); }
     .topbar > div:last-child { justify-content: flex-start; border-bottom: 0; }
     .hero-note { grid-template-columns: 1fr; }
+    .hero-copy { padding-left: 52px; }
+    .jp-vertical-right { display: none; }
+    section[id][data-jp]::before { display: none; }
     .hero-stamp { width: 126px; height: 126px; }
     .section-head { grid-template-columns: 1fr; }
     .floor { grid-template-columns: 1fr; }
@@ -1443,10 +1706,15 @@
     .chapter-row em { grid-column: 2; }
     .path-strip { grid-template-columns: 1fr; }
     .path-step { border-right: 0; border-bottom: 1px solid var(--ink); min-height: 128px; }
-    .route-selector { grid-template-columns: 1fr; }
-    .route-choice { min-height: 82px; border-right: 0; border-bottom: 1px solid rgba(242,234,219,0.42); }
-    .route-choice:last-child { border-bottom: 0; }
-    .route-choice b { font-size: 2.8rem; }
+    .subject-selector,
+    .route-selector { gap: 5px; }
+    .subject-choice,
+    .class-choice,
+    .route-choice { min-height: 34px; padding: 7px 9px; }
+    .subject-choice b,
+    .class-choice b,
+    .route-choice b { font-size: 1.1rem; }
+    .dock-actions { flex-wrap: wrap; }
     .route-node-grid { grid-template-columns: 1fr; }
     .tracker-row { grid-template-columns: 1fr 1fr; }
     .tracker-row strong,
@@ -1560,8 +1828,8 @@
   }
 
   @keyframes routeDockIgnite {
-    0% { opacity: 0; transform: translateY(-22px) scaleY(0.78); filter: contrast(1.8); }
-    58% { opacity: 1; transform: translateY(4px) scaleY(1.05); filter: contrast(1.2); }
+    0% { opacity: 0; transform: translateY(-18px) scaleY(0.88); filter: contrast(1.5); }
+    58% { opacity: 1; transform: translateY(3px) scaleY(1.03); filter: contrast(1.12); }
     100% { opacity: 1; transform: translateY(0) scaleY(1); filter: none; }
   }
 
@@ -2427,39 +2695,54 @@
   </script>
   <main class="shell">
     <header class="topbar">
-      <div><a class="brand" href="#top">NEET BIO MAP</a></div>
+      <div><a class="brand" href="#top">NEET MAP</a></div>
       <div><span class="status">Foundation order / CBSE XI-XII</span></div>
       <div><span class="tagline">No decoration. Only dependency.</span></div>
     </header>
 
-    <section class="route-dock" aria-label="Route selector">
+    <section class="route-dock" aria-label="Study controls">
       <div class="route-dock-head">
-        <span>Route selector</span>
-        <strong id="routeNameTop">Full map</strong>
+        <span>Subject</span>
+        <strong id="routeNameTop">Biology</strong>
       </div>
-      <div class="route-selector" id="routeSelector">
-        <button class="route-choice" type="button" data-route="all" aria-pressed="true"><b>00</b><span>Full map</span><em>All floors</em></button>
-        <button class="route-choice" type="button" data-route="cell" aria-pressed="false"><b>01</b><span>Cell to gene</span><em>Molecule to DNA</em></button>
-        <button class="route-choice" type="button" data-route="form" aria-pressed="false"><b>02</b><span>Form to function</span><em>Body plan to systems</em></button>
-        <button class="route-choice" type="button" data-route="ecology" aria-pressed="false"><b>03</b><span>Organism to ecology</span><em>Life to biosphere</em></button>
+      <div class="deck-controls">
+        <div class="subject-selector" id="subjectSelector" aria-label="Subject selector">
+          <button class="subject-choice" type="button" data-subject="biology" aria-pressed="true"><b>BIO</b><span>Biology</span><small>32</small></button>
+          <button class="subject-choice" type="button" data-subject="physics" aria-pressed="false"><b>PHY</b><span>Physics</span><small>28</small></button>
+          <button class="subject-choice" type="button" data-subject="chemistry" aria-pressed="false"><b>CHEM</b><span>Chemistry</span><small>19</small></button>
+        </div>
+        <div class="route-selector" id="routeSelector" aria-label="Route selector">
+          <button class="route-choice" type="button" data-route="all" aria-pressed="true"><b>00</b><span>Full map</span><em>All floors</em></button>
+          <button class="route-choice" type="button" data-route="route1" aria-pressed="false"><b>01</b><span>Route one</span><em>Foundation</em></button>
+          <button class="route-choice" type="button" data-route="route2" aria-pressed="false"><b>02</b><span>Route two</span><em>Bridge</em></button>
+          <button class="route-choice" type="button" data-route="route3" aria-pressed="false"><b>03</b><span>Route three</span><em>Capstone</em></button>
+        </div>
       </div>
       <div class="route-readout">
-        <span>Active chapter spine</span>
+        <span>Active spine</span>
         <strong id="routeReadoutLine">All chapters are visible in foundation-floor order.</strong>
-        <button class="route-jump" type="button" id="routeJumpButton">View route</button>
+        <div class="dock-actions">
+          <button class="route-jump" type="button" id="routeJumpButton">View map</button>
+          <button class="class-choice" type="button" data-class-filter="all" aria-pressed="true"><b>ALL</b><span>All</span></button>
+          <button class="class-choice" type="button" data-class-filter="11" aria-pressed="false"><b>XI</b><span>11</span></button>
+          <button class="class-choice" type="button" data-class-filter="12" aria-pressed="false"><b>XII</b><span>12</span></button>
+        </div>
       </div>
     </section>
 
-    <section class="hero" id="top">
+    <section class="hero" id="top" data-jp="学習地図">
       <div class="hero-copy">
-        <div class="eyebrow">Biology built like a tower</div>
+        <div class="hero-kanji" aria-hidden="true">勝</div>
+        <div class="jp-vertical jp-vertical-left" aria-hidden="true">基礎から勝利へ</div>
+        <div class="eyebrow">NEET subjects built like towers</div>
         <h1>Study <span class="serif">from</span><br><span class="strike">Foundation</span><br>to NEET</h1>
         <div class="hero-note">
-          <p>This is a chapter linkage map for CBSE Class 11 and 12 Biology shaped around NEET. It does not keep class 11 and 12 separate. It stacks chapters by dependency: first the language of life, then cells, inheritance, physiology, reproduction, biotechnology, ecology, and final revision routes.</p>
+          <p>This is a chapter linkage map for CBSE Class 11 and 12 Biology, Physics, and Chemistry shaped around NEET-style revision. It does not keep class 11 and 12 separate. It stacks chapters by dependency so each subject has a foundation spine, route map, chapter inventory, and tracker.</p>
           <div class="hero-stamp">NCERT first<br>NEET aligned<br>Zero fluff</div>
         </div>
       </div>
       <aside class="hero-side">
+        <div class="jp-vertical jp-vertical-right" aria-hidden="true">生物 物理 化学</div>
         <div class="side-panel">
           <h2>How to read it</h2>
           <div class="metric"><strong>01</strong><span>Start from the lowest floor. Never jump into genetics before cell cycle and biomolecules.</span></div>
@@ -2477,7 +2760,7 @@
       </aside>
     </section>
 
-    <section id="start" aria-labelledby="start-title">
+    <section id="start" aria-labelledby="start-title" data-jp="開始">
       <div class="section-head">
         <h2 id="start-title">Start here</h2>
         <p>The safest beginner route. If the whole syllabus feels huge, follow only these six blocks first and the rest of the map becomes easier to read.</p>
@@ -2498,7 +2781,7 @@
       </div>
     </section>
 
-    <section id="map" aria-labelledby="map-title">
+    <section id="map" aria-labelledby="map-title" data-jp="地図">
       <div class="section-head">
         <h2 id="map-title">The foundation map</h2>
         <p>Each floor is a load-bearing layer. The order is not textbook order; it is concept order for understanding and retention.</p>
@@ -2519,7 +2802,7 @@
       <article class="detail-card" id="detailCard">
         <span class="code">Select a block</span>
         <h2>Click any chapter</h2>
-        <p>The map will show what must be mastered before it, what it unlocks, and why it matters for NEET Biology.</p>
+        <p>The map will show what must be mastered before it, what it unlocks, and why it matters for the selected subject.</p>
         <div class="detail-meta">
           <div><b>11+12</b><span>Intermixed</span></div>
           <div><b>NCERT</b><span>Primary source</span></div>
@@ -2533,10 +2816,10 @@
       </aside>
     </section>
 
-    <section id="clusters" aria-labelledby="clusters-title">
+    <section id="clusters" aria-labelledby="clusters-title" data-jp="体系">
       <div class="section-head">
         <h2 id="clusters-title">Chapter clusters</h2>
-        <p>Think in systems, not isolated chapters. These clusters are the cleanest way to revise mixed Class 11 and Class 12 Biology.</p>
+        <p>Think in systems, not isolated chapters. Switch subjects from the top navigation to rebuild the same structure for Biology, Physics, or Chemistry.</p>
       </div>
       <div class="systems-grid">
         <article class="system-card"><h3>Cell-gene cluster</h3><p>The engine room of modern Biology.</p><ul><li>Cell, Biomolecules, Cell Cycle</li><li>Inheritance and Molecular Basis</li><li>Biotechnology principles and applications</li></ul></article>
@@ -2550,7 +2833,7 @@
       </div>
     </section>
 
-    <section id="warnings" aria-labelledby="warnings-title">
+    <section id="warnings" aria-labelledby="warnings-title" data-jp="注意">
       <div class="section-head">
         <h2 id="warnings-title">Warning system</h2>
         <p>Use these labels as study alarms. They tell you how a chapter usually punishes careless preparation.</p>
@@ -2562,7 +2845,7 @@
       </div>
     </section>
 
-    <section id="routes" aria-labelledby="routes-title">
+    <section id="routes" aria-labelledby="routes-title" data-jp="道筋">
       <div class="section-head">
         <h2 id="routes-title">Three clean routes</h2>
         <p>Use these as revision highways after the first full map pass. They intentionally mix class 11 and class 12.</p>
@@ -2609,7 +2892,7 @@
       </div>
     </section>
 
-    <section id="plan" aria-labelledby="plan-title">
+    <section id="plan" aria-labelledby="plan-title" data-jp="計画">
       <div class="section-head">
         <h2 id="plan-title">30-day route</h2>
         <p>A compressed revision order for students who already know the syllabus once and need structure before NEET-style practice.</p>
@@ -2622,7 +2905,7 @@
       </div>
     </section>
 
-    <section id="recall" aria-labelledby="recall-title">
+    <section id="recall" aria-labelledby="recall-title" data-jp="記憶">
       <div class="section-head">
         <h2 id="recall-title">Active recall prompts</h2>
         <p>Do not only reread. Every chapter should pass these checks before it is marked as revised.</p>
@@ -2634,7 +2917,7 @@
       </div>
     </section>
 
-    <section id="syllabus" aria-labelledby="syllabus-title">
+    <section id="syllabus" aria-labelledby="syllabus-title" data-jp="章一覧">
       <div class="section-head">
         <h2 id="syllabus-title">Chapter inventory</h2>
         <p>The inventory follows current NCERT-style CBSE Class 11 and 12 Biology coverage commonly used for NEET preparation.</p>
@@ -2651,7 +2934,7 @@
       </div>
     </section>
 
-    <section id="track" aria-labelledby="track-title">
+    <section id="track" aria-labelledby="track-title" data-jp="進捗">
       <div class="section-head">
         <h2 id="track-title">Completion tracker</h2>
         <p>Mark progress chapter by chapter. Your status is saved in this browser so the map becomes a working study board.</p>
@@ -2661,10 +2944,10 @@
       </div>
     </section>
 
-    <section id="exam" aria-labelledby="exam-title">
+    <section id="exam" aria-labelledby="exam-title" data-jp="試験">
       <div class="section-head">
         <h2 id="exam-title">Exam lens</h2>
-        <p>NEET Biology rewards NCERT precision. This map is for sequence; your score still comes from line-by-line revision, diagrams, examples, and PYQs.</p>
+        <p>NEET rewards NCERT precision and route discipline. This map is for sequence; your score still comes from line-by-line revision, diagrams, formulas, reactions, examples, and PYQs.</p>
       </div>
       <div class="exam-band">
         <div class="exam-card"><b>Priority</b><p>Human Physiology, Genetics, Molecular Basis, Reproduction, Ecology, Biotechnology, and Plant Physiology usually demand repeated revision.</p></div>
@@ -2679,7 +2962,7 @@
       <span>Designed as a stark study map: no glass, no blur, no decorative fog.</span>
     </footer>
   </main>
-
+<script src="data.js"></script>
 <script>
   const floors = [
     {
@@ -2779,13 +3062,15 @@
   const startPathButton = document.querySelector('#startPathButton');
   const filters = document.querySelectorAll('.filter-btn');
   const routeButtons = document.querySelectorAll('.route-choice');
+  const subjectButtons = document.querySelectorAll('.subject-choice');
+  const classButtons = document.querySelectorAll('.class-choice');
   const routeNameTop = document.querySelector('#routeNameTop');
   const routeReadoutLine = document.querySelector('#routeReadoutLine');
   const routeJumpButton = document.querySelector('#routeJumpButton');
-  const startPathIds = ['living-world', 'cell', 'biomolecules', 'cell-cycle', 'inheritance', 'molecular'];
   const trackerStates = ['Read once', 'Revised', 'PYQs done', 'Mistakes fixed'];
   let activeFilter = 'all';
   let activeRoute = 'all';
+  let activeSubject = 'biology';
   const focusByType = {
     conceptual: ['Definitions', 'Process flow', 'Diagrams', 'PYQ logic'],
     memory: ['NCERT tables', 'Examples', 'One-line facts', 'Repeated recall']
@@ -3011,52 +3296,61 @@
     ]
   };
 
+  function biologyIds() {
+    return floors.flatMap(floor => floor.chapters.map(chapter => chapter.id));
+  }
+
+  const subjectDecks = {
+    biology: {
+      key: 'biology',
+      label: 'Biology',
+      code: 'BIO',
+      startPathIds: ['living-world', 'cell', 'biomolecules', 'cell-cycle', 'inheritance', 'molecular'],
+      floors,
+      chapterTopics,
+      routes: {
+        all: { code: '00', label: 'Full biology', deck: 'All floors', summary: 'All Biology chapters are visible in foundation-floor order.', ids: biologyIds() },
+        route1: { code: '01', label: 'Cell to gene', deck: 'Molecule to DNA', summary: 'Biomolecules, cell structure, division, genetics, molecular basis, and biotechnology in one clean spine.', ids: ['biomolecules', 'cell', 'cell-cycle', 'inheritance', 'molecular', 'biotech-principles', 'biotech-applications'] },
+        route2: { code: '02', label: 'Form to function', deck: 'Body plan to systems', summary: 'Body plans, tissues, plant physiology, human systems, and reproduction arranged as structure becoming function.', ids: ['plant-kingdom', 'animal-kingdom', 'morphology', 'anatomy', 'animal-tissue', 'photosynthesis', 'plant-respiration', 'plant-growth', 'breathing', 'circulation', 'excretion', 'locomotion', 'neural', 'chemical', 'flower-reproduction', 'human-reproduction', 'reproductive-health'] },
+        route3: { code: '03', label: 'Organism to ecology', deck: 'Life to biosphere', summary: 'Language of life, classification, evolution, ecology, biodiversity, health, microbes, and applied intervention.', ids: ['living-world', 'classification', 'evolution', 'organisms-populations', 'ecosystem', 'biodiversity', 'human-health', 'microbes', 'biotech-applications'] }
+      }
+    },
+    ...(window.studyDecks || {})
+  };
+
+  function currentDeck() {
+    return subjectDecks[activeSubject] || subjectDecks.biology;
+  }
+
+  function currentRoutes() {
+    return currentDeck().routes || subjectDecks.biology.routes;
+  }
+
   function enrichChapter(chapter) {
-    const isDiagramHeavy = /anatomy|cell|flower|reproduction|breathing|circulation|excretion|neural|biotech|photosynthesis/i.test(`${chapter.id} ${chapter.title}`);
-    const focus = focusByType[chapter.type] || focusByType.conceptual;
-    const warning = isDiagramHeavy ? 'Diagram must be mastered' : warningByType[chapter.type];
+    const isDiagramHeavy = /anatomy|cell|flower|reproduction|breathing|circulation|excretion|neural|biotech|photosynthesis|field|circuit|optic|rotation|organic|bond|coordination|electrochemistry/i.test(`${chapter.id} ${chapter.title}`);
+    const focus = chapter.ncert || focusByType[chapter.type] || focusByType.conceptual;
+    const warning = chapter.warning || (isDiagramHeavy ? 'Diagram or formula map must be mastered' : warningByType[chapter.type]);
     return {
       ...chapter,
-      difficulty: isDiagramHeavy ? 'Diagram heavy' : difficultyByType[chapter.type],
+      difficulty: chapter.difficulty || (isDiagramHeavy ? 'Diagram heavy' : difficultyByType[chapter.type]),
       pyq: pyqByYield[chapter.yield] || 'Moderate PYQ',
       ncert: focus,
       warning,
       stuck: stuckGuide[chapter.id] || chapter.before,
-      recall: recallByType[chapter.type] || recallByType.conceptual
+      recall: chapter.recall || recallByType[chapter.type] || recallByType.conceptual
     };
   }
 
-  const allChapters = floors.flatMap(floor => floor.chapters.map(chapter => enrichChapter({ ...chapter, floor: floor.level, floorName: floor.name })));
-  const routePlans = {
-    all: {
-      code: '00',
-      label: 'Full map',
-      deck: 'All floors',
-      summary: 'All chapters are visible in foundation-floor order.',
-      ids: allChapters.map(chapter => chapter.id)
-    },
-    cell: {
-      code: '01',
-      label: 'Cell to gene',
-      deck: 'Molecule to DNA',
-      summary: 'Biomolecules, cell structure, division, genetics, molecular basis, and biotechnology in one clean spine.',
-      ids: ['biomolecules', 'cell', 'cell-cycle', 'inheritance', 'molecular', 'biotech-principles', 'biotech-applications']
-    },
-    form: {
-      code: '02',
-      label: 'Form to function',
-      deck: 'Body plan to systems',
-      summary: 'Body plans, tissues, plant physiology, human systems, and reproduction arranged as structure becoming function.',
-      ids: ['plant-kingdom', 'animal-kingdom', 'morphology', 'anatomy', 'animal-tissue', 'photosynthesis', 'plant-respiration', 'plant-growth', 'breathing', 'circulation', 'excretion', 'locomotion', 'neural', 'chemical', 'flower-reproduction', 'human-reproduction', 'reproductive-health']
-    },
-    ecology: {
-      code: '03',
-      label: 'Organism to ecology',
-      deck: 'Life to biosphere',
-      summary: 'Language of life, classification, evolution, ecology, biodiversity, health, microbes, and applied intervention.',
-      ids: ['living-world', 'classification', 'evolution', 'organisms-populations', 'ecosystem', 'biodiversity', 'human-health', 'microbes', 'biotech-applications']
-    }
-  };
+  function deckChapters(deck = currentDeck()) {
+    return deck.floors.flatMap(floor => floor.chapters.map(chapter => enrichChapter({
+      ...chapter,
+      subject: deck.key,
+      subjectLabel: deck.label,
+      subjectCode: deck.code,
+      floor: floor.level,
+      floorName: floor.name
+    })));
+  }
 
   function filterMatches(chapter, filter) {
     if (filter === 'all') return true;
@@ -3067,21 +3361,55 @@
   }
 
   function getRouteChapters(routeKey = activeRoute, filter = activeFilter) {
-    const plan = routePlans[routeKey] || routePlans.all;
+    const chapters = deckChapters();
+    const plans = currentRoutes();
+    const plan = plans[routeKey] || plans.all;
     return plan.ids
-      .map(id => allChapters.find(chapter => chapter.id === id))
+      .map(id => chapters.find(chapter => chapter.id === id))
       .filter(Boolean)
       .filter(chapter => filterMatches(chapter, filter));
   }
 
-  function updateRouteReadout() {
-    const plan = routePlans[activeRoute] || routePlans.all;
-    const count = getRouteChapters(activeRoute, activeFilter).length;
-    routeNameTop.textContent = plan.label;
-    routeReadoutLine.textContent = `${plan.summary} ${count} chapter${count === 1 ? '' : 's'} active.`;
-    routeButtons.forEach(button => {
-      button.setAttribute('aria-pressed', String(button.dataset.route === activeRoute));
+  function updateRouteControls() {
+    const plans = currentRoutes();
+    const routeKeys = ['all', 'route1', 'route2', 'route3'];
+    routeButtons.forEach((button, index) => {
+      const key = routeKeys[index];
+      const plan = plans[key];
+      button.hidden = !plan;
+      if (!plan) return;
+      button.dataset.route = key;
+      button.querySelector('b').textContent = plan.code;
+      button.querySelector('span').textContent = plan.label;
+      button.querySelector('em').textContent = plan.deck;
+      button.setAttribute('aria-pressed', String(key === activeRoute));
     });
+    subjectButtons.forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.subject === activeSubject));
+    });
+    classButtons.forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.classFilter === activeFilter));
+    });
+  }
+
+  function updateFilterButtons(filter) {
+    filters.forEach(item => {
+      item.setAttribute('aria-pressed', String(item.dataset.filter === filter));
+    });
+    classButtons.forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.classFilter === filter));
+    });
+  }
+
+  function updateRouteReadout() {
+    const deck = currentDeck();
+    const plans = currentRoutes();
+    if (!plans[activeRoute]) activeRoute = 'all';
+    const plan = plans[activeRoute] || plans.all;
+    const count = getRouteChapters(activeRoute, activeFilter).length;
+    routeNameTop.textContent = deck.label;
+    routeReadoutLine.textContent = `${plan.summary} ${count} chapter${count === 1 ? '' : 's'} active.`;
+    updateRouteControls();
   }
 
   function renderMap(filter = 'all') {
@@ -3092,14 +3420,17 @@
       return;
     }
 
+    const deck = currentDeck();
     chapterMap.innerHTML = '';
     chapterMap.classList.remove('is-route-mode');
-    floors.forEach(floor => {
-      const visibleChapters = floor.chapters.filter(chapter => {
-        return filterMatches(chapter, filter);
-      });
+    let hasVisibleChapters = false;
+    deck.floors.forEach(floor => {
+      const visibleChapters = floor.chapters
+        .map(chapter => enrichChapter({ ...chapter, subject: deck.key, subjectLabel: deck.label, subjectCode: deck.code, floor: floor.level, floorName: floor.name }))
+        .filter(chapter => filterMatches(chapter, filter));
 
       if (!visibleChapters.length) return;
+      hasVisibleChapters = true;
 
       const floorElement = document.createElement('article');
       floorElement.className = 'floor';
@@ -3113,34 +3444,37 @@
 
       const nodes = floorElement.querySelector('.nodes');
       visibleChapters.forEach(chapter => {
-        const enriched = enrichChapter(chapter);
         const node = document.createElement('button');
         node.className = 'node';
         node.type = 'button';
-        node.dataset.id = enriched.id;
-        node.dataset.class = enriched.class;
-        node.dataset.code = enriched.code;
+        node.dataset.id = chapter.id;
+        node.dataset.class = chapter.class;
+        node.dataset.code = chapter.code;
+        node.dataset.subject = chapter.subject;
         node.innerHTML = `
-          <h3>${enriched.title}</h3>
-          <p>${enriched.note}</p>
-          <div class="node-tags"><span class="node-tag">${enriched.difficulty}</span><span class="node-tag">${enriched.pyq}</span></div>
+          <h3>${chapter.title}</h3>
+          <p>${chapter.note}</p>
+          <div class="node-tags"><span class="node-tag">${chapter.difficulty}</span><span class="node-tag">${chapter.pyq}</span></div>
         `;
-        node.addEventListener('click', () => window.location.href = 'chapter.html?id=' + enriched.id);
+        node.addEventListener('click', () => window.location.href = 'chapter.html?id=' + chapter.id);
         nodes.appendChild(node);
       });
 
       chapterMap.appendChild(floorElement);
     });
+
+    if (!hasVisibleChapters) showEmptySelection();
   }
 
   function renderRouteMap(filter = activeFilter) {
-    const plan = routePlans[activeRoute] || routePlans.all;
+    const plans = currentRoutes();
+    const plan = plans[activeRoute] || plans.all;
     const chapters = getRouteChapters(activeRoute, filter);
     chapterMap.innerHTML = '';
     chapterMap.classList.add('is-route-mode');
 
     if (!chapters.length) {
-      chapterMap.innerHTML = `<div class="route-empty">No chapters match this route with the current filter.</div>`;
+      showEmptySelection();
       return;
     }
 
@@ -3166,6 +3500,7 @@
       node.dataset.id = chapter.id;
       node.dataset.class = chapter.class;
       node.dataset.code = chapter.code;
+      node.dataset.subject = chapter.subject;
       node.dataset.routeStep = String(index + 1).padStart(2, '0');
       node.style.animationDelay = `${index * 58}ms`;
       node.innerHTML = `
@@ -3185,7 +3520,8 @@
   }
 
   function topicCards(chapterId) {
-    const topics = chapterTopics[chapterId] || [];
+    const deck = currentDeck();
+    const topics = (deck.chapterTopics && deck.chapterTopics[chapterId]) || [];
     return topics.map((topic, index) => `
       <article class="topic-card" style="animation-delay:${index * 70}ms">
         <b>${String(index + 1).padStart(2, '0')} / ${topic.title}</b>
@@ -3195,7 +3531,7 @@
   }
 
   function selectChapter(id) {
-    const chapter = allChapters.find(item => item.id === id);
+    const chapter = deckChapters().find(item => item.id === id);
     if (!chapter) return;
 
     document.querySelectorAll('.node').forEach(node => {
@@ -3203,12 +3539,12 @@
     });
 
     detailCard.innerHTML = `
-      <span class="code">${chapter.code} / Floor ${chapter.floor}</span>
+      <span class="code">${chapter.subjectLabel} / ${chapter.code} / Floor ${chapter.floor}</span>
       <h2>${chapter.title}</h2>
       <p>${chapter.note} This block sits on <strong>${chapter.floorName}</strong>, so revise it with its prerequisite chapters instead of treating it as an isolated lesson.</p>
       <div class="detail-meta">
         <div><b>${chapter.class}</b><span>Class</span></div>
-        <div><b>${chapter.yield}</b><span>NEET yield</span></div>
+        <div><b>${chapter.yield}</b><span>Exam yield</span></div>
         <div><b>${chapter.difficulty}</b><span>Difficulty</span></div>
         <div><b>${chapter.pyq}</b><span>PYQ heat</span></div>
         <div><b>${chapter.type}</b><span>Nature</span></div>
@@ -3232,11 +3568,33 @@
     `;
   }
 
-  function renderInventory() {
-    const class11 = allChapters.filter(chapter => chapter.class === '11');
-    const class12 = allChapters.filter(chapter => chapter.class === '12');
+  function showEmptySelection() {
+    const deck = currentDeck();
+    chapterMap.innerHTML = `<div class="route-empty"><b>${deck.label}</b><span>No chapters match this selector. Switch class or route to reopen the deck.</span></div>`;
+    detailCard.innerHTML = `
+      <span class="code">${deck.code}</span>
+      <h2>${deck.label}</h2>
+      <p>This subject deck is loaded with Class 11 and Class 12 chapters. Use All, XI, or XII to change the visible foundation map.</p>
+    `;
+    linkPanel.innerHTML = `
+      <h3>Subject map</h3>
+      <div class="route"><strong>Loaded</strong><div class="chips">${chipList(deckChapters(deck).map(chapter => chapter.title).slice(0, 6))}</div></div>
+      <div class="route"><strong>Use</strong><div class="chips">${chipList(['All', 'Class XI', 'Class XII', 'Routes'])}</div></div>
+    `;
+  }
 
-    const renderRows = chapters => chapters.map(chapter => `
+  function renderInventory() {
+    const deck = currentDeck();
+    const chapters = deckChapters(deck);
+    const class11 = chapters.filter(chapter => chapter.class === '11');
+    const class12 = chapters.filter(chapter => chapter.class === '12');
+    const syllabusIntro = document.querySelector('#syllabus .section-head p');
+    const classHeads = document.querySelectorAll('.class-block h3');
+    if (syllabusIntro) syllabusIntro.textContent = `The inventory follows the loaded ${deck.label} deck with Class 11 and Class 12 chapters arranged for foundation-first revision.`;
+    if (classHeads[0]) classHeads[0].textContent = `Class XI ${deck.label}`;
+    if (classHeads[1]) classHeads[1].textContent = `Class XII ${deck.label}`;
+
+    const renderRows = rows => rows.map(chapter => `
       <button class="chapter-row" type="button" data-id="${chapter.id}">
         <b>${chapter.code}</b>
         <span>${chapter.title}</span>
@@ -3254,8 +3612,26 @@
     });
   }
 
+  function renderStartPath() {
+    const deck = currentDeck();
+    const chapters = deckChapters(deck);
+    const pathButtons = document.querySelectorAll('.path-step');
+    (deck.startPathIds || []).forEach((id, index) => {
+      const chapter = chapters.find(item => item.id === id);
+      const button = pathButtons[index];
+      if (!button || !chapter) return;
+      button.dataset.id = chapter.id;
+      const number = button.querySelector('b');
+      const label = button.querySelector('span');
+      if (number) number.textContent = String(index + 1).padStart(2, '0');
+      if (label) label.textContent = chapter.title;
+    });
+    const brief = document.querySelector('.start-brief p');
+    if (brief) brief.textContent = `This is the ${deck.label} foundation spine. Use it before jumping into heavier Class 12 chapters, mixed PYQs, or timed revision.`;
+  }
+
   function progressKey(id, state) {
-    return `neet-bio-map:${id}:${state}`;
+    return `study-map:${activeSubject}:${id}:${state}`;
   }
 
   function getProgress(id, state) {
@@ -3276,7 +3652,7 @@
   }
 
   function renderTracker() {
-    trackerBoard.innerHTML = allChapters.map(chapter => `
+    trackerBoard.innerHTML = deckChapters().map(chapter => `
       <div class="tracker-row">
         <strong>${chapter.code}</strong>
         <span>${chapter.title}</span>
@@ -3300,44 +3676,62 @@
     window.location.href = 'chapter.html?id=' + id;
   }
 
-  function setActiveRoute(routeKey, shouldScroll = true) {
-    activeRoute = routePlans[routeKey] ? routeKey : 'all';
-    updateRouteReadout();
+  function refreshSubject(shouldScroll = true) {
+    updateFilterButtons(activeFilter);
+    renderStartPath();
     renderMap(activeFilter);
-
-    const firstChapter = getRouteChapters(activeRoute, activeFilter)[0];
+    renderInventory();
+    renderTracker();
+    const firstChapter = getRouteChapters(activeRoute, activeFilter)[0] || deckChapters()[0];
     if (firstChapter) selectChapter(firstChapter.id);
     if (shouldScroll) document.querySelector('#map').scrollIntoView({ behavior: 'smooth' });
   }
 
-  function highlightStartPath() {
+  function setActiveSubject(subjectKey, shouldScroll = true) {
+    activeSubject = subjectDecks[subjectKey] ? subjectKey : 'biology';
     activeRoute = 'all';
-    updateRouteReadout();
-    filters.forEach(item => item.setAttribute('aria-pressed', item.dataset.filter === 'all' ? 'true' : 'false'));
     activeFilter = 'all';
-    renderMap(activeFilter);
-    selectChapter(startPathIds[0]);
-    startPathIds.forEach(id => {
+    refreshSubject(shouldScroll);
+  }
+
+  function setActiveRoute(routeKey, shouldScroll = true) {
+    activeRoute = currentRoutes()[routeKey] ? routeKey : 'all';
+    refreshSubject(shouldScroll);
+  }
+
+  function setActiveFilter(filter, shouldScroll = false) {
+    activeFilter = filter;
+    refreshSubject(shouldScroll);
+  }
+
+  function highlightStartPath() {
+    const deck = currentDeck();
+    activeRoute = 'all';
+    activeFilter = 'all';
+    refreshSubject(false);
+    (deck.startPathIds || []).forEach(id => {
       const node = document.querySelector(`.node[data-id="${id}"]`);
       if (node) node.classList.add('is-active');
     });
+    const first = (deck.startPathIds || [])[0] || (deckChapters()[0] && deckChapters()[0].id);
+    if (first) selectChapter(first);
     document.querySelector('#map').scrollIntoView({ behavior: 'smooth' });
   }
 
   filters.forEach(button => {
-    button.addEventListener('click', () => {
-      filters.forEach(item => item.setAttribute('aria-pressed', 'false'));
-      button.setAttribute('aria-pressed', 'true');
-      renderMap(button.dataset.filter);
-      if (activeRoute !== 'all') {
-        const firstChapter = getRouteChapters(activeRoute, activeFilter)[0];
-        if (firstChapter) selectChapter(firstChapter.id);
-      }
-    });
+    button.addEventListener('click', () => setActiveFilter(button.dataset.filter));
+  });
+
+  classButtons.forEach(button => {
+    button.addEventListener('click', () => setActiveFilter(button.dataset.classFilter, true));
   });
 
   routeButtons.forEach(button => {
     button.addEventListener('click', () => setActiveRoute(button.dataset.route));
+  });
+
+  subjectButtons.forEach(button => {
+    button.addEventListener('click', () => setActiveSubject(button.dataset.subject));
   });
 
   routeJumpButton.addEventListener('click', () => {
@@ -3350,19 +3744,17 @@
 
   startPathButton.addEventListener('click', highlightStartPath);
 
-  updateRouteReadout();
-  renderMap(activeFilter);
-  renderInventory();
-  renderTracker();
-
   try {
-    const initialRoute = new URLSearchParams(window.location.search).get('route');
-    if (initialRoute && routePlans[initialRoute]) {
-      setActiveRoute(initialRoute, window.location.hash === '#map');
-    }
+    const params = new URLSearchParams(window.location.search);
+    const initialSubject = params.get('subject');
+    const initialRoute = params.get('route');
+    if (initialSubject && subjectDecks[initialSubject]) activeSubject = initialSubject;
+    if (initialRoute && currentRoutes()[initialRoute]) activeRoute = initialRoute;
   } catch (error) {
     // Keep the static page usable if URL parsing is unavailable.
   }
+
+  refreshSubject(false);
 </script>
 </body>
 </html>
